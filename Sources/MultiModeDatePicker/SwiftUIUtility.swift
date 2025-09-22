@@ -10,8 +10,8 @@ import SwiftUI
 
 
 @MainActor
-class SwiftUIUtility {
-    class func showCustomPicker(
+public class SwiftUIUtility {
+   public class func showCustomPicker(
         from presenter: UIViewController? = UIApplication.topViewController(),
         title: String,
         initialDate: Date = Date(),

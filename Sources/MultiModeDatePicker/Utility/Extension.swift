@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIApplication {
-    class func topViewController(base: UIViewController? = UIApplication.shared.connectedScenes
+   public class func topViewController(base: UIViewController? = UIApplication.shared.connectedScenes
                                     .compactMap { ($0 as? UIWindowScene)?.keyWindow }
                                     .first?.rootViewController) -> UIViewController? {
 

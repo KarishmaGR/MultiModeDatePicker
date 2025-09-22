@@ -29,7 +29,8 @@ public class SwiftUIUtility {
             maxDate: maxDate,
             pickerType: pickerType,
             onDone: { completion($0) },
-            onCancel: { completion(nil) }
+            onCancel: {  },
+
         )
 
         let host = UIHostingController(rootView: wrapper)
@@ -39,3 +40,4 @@ public class SwiftUIUtility {
         presenter.present(host, animated: true)
     }
 }
+

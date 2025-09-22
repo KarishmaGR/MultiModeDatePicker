@@ -52,15 +52,8 @@ struct DatePickerPopup: View {
                     minDate: minDate,
                     maxDate: maxDate,
                     title: title,
-                    pickerStyle: pickerType,
-                    onSelect: { date in
-                        dismiss()
-                        onDone(date)
-                    },
-                    onCancel: {
-                        dismiss()
-                        onCancel()
-                    }
+                    pickerStyle: pickerType
+                   
                 )
                 .labelsHidden()
                 

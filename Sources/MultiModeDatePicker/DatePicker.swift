@@ -26,10 +26,7 @@ public struct DatePickerView: View {
     private let maxDate: Date?
     private let title: String
     private let pickerStyle: CustomPickerType
-    
-    private let onSelect: (Date)-> Void
-    private let onCancel: (()-> Void)?
-    
+   
     
     public init(
         initialDate: Date = Date(),
@@ -37,9 +34,7 @@ public struct DatePickerView: View {
         minDate: Date?,
         maxDate: Date?,
         title: String = "Select Date",
-        pickerStyle: CustomPickerType,
-        onSelect: @escaping (Date) -> Void,
-        onCancel: (()-> Void)? = nil
+        pickerStyle: CustomPickerType
     ){
        
         self._selectedDate = selectedDate
@@ -47,8 +42,6 @@ public struct DatePickerView: View {
         self.maxDate = maxDate
         self.title = title
         self.pickerStyle = pickerStyle
-        self.onSelect = onSelect
-        self.onCancel = onCancel
     }
     
     public var body: some View {

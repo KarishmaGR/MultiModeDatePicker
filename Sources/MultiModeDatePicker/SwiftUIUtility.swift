@@ -10,8 +10,8 @@ import SwiftUI
 
 
 @MainActor
-public class SwiftUIUtility {
-   public class func showCustomPicker(
+public class MultiModeDatePicker {
+   public class func showDatePicker(
         from presenter: UIViewController? = UIApplication.topViewController(),
         title: String,
         initialDate: Date = Date(),

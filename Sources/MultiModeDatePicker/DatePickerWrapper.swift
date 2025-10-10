@@ -8,6 +8,7 @@ struct DatePickerPopup: View {
     var minDate: Date?
     var maxDate: Date?
     var pickerType: CustomPickerType
+    var timeSystem: TimeSystem
     var onDone: (Date) -> Void
     var onCancel: () -> Void
 
@@ -19,6 +20,7 @@ struct DatePickerPopup: View {
         minDate: Date? = nil,
         maxDate: Date? = nil,
         pickerType: CustomPickerType = .date,
+        timeSystem: TimeSystem = .tweleHours,
         onDone: @escaping (Date) -> Void,
         onCancel: @escaping () -> Void
     ) {
@@ -27,6 +29,7 @@ struct DatePickerPopup: View {
         self.minDate = minDate
         self.maxDate = maxDate
         self.pickerType = pickerType
+        self.timeSystem = timeSystem
         self.onDone = onDone
         self.onCancel = onCancel
         _selectedDate = State(initialValue: initialDate)
@@ -52,6 +55,7 @@ struct DatePickerPopup: View {
                     minDate: minDate,
                     maxDate: maxDate,
                     title: title,
+                    timeSystem: timeSystem,
                     pickerStyle: pickerType
                    
                 )

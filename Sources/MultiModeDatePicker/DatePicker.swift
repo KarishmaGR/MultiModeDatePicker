@@ -9,15 +9,6 @@
 import Foundation
 import SwiftUI
 
-public enum CustomPickerType {
-    case date
-    case dateTime
-    case monthDay
-    case year
-    case yearMonth
-    case time
-}
-
 public struct DatePickerView: View {
     @Environment(\.dismiss) private var dismiss
     
@@ -26,7 +17,7 @@ public struct DatePickerView: View {
     private let maxDate: Date?
     private let title: String
     private let pickerStyle: CustomPickerType
-   
+    private let timeSystem: TimeSystem
     
     public init(
         initialDate: Date = Date(),
@@ -34,6 +25,7 @@ public struct DatePickerView: View {
         minDate: Date?,
         maxDate: Date?,
         title: String = "Select Date",
+        timeSystem: TimeSystem,
         pickerStyle: CustomPickerType
     ){
        
@@ -41,6 +33,7 @@ public struct DatePickerView: View {
         self.minDate = minDate
         self.maxDate = maxDate
         self.title = title
+        self.timeSystem = timeSystem
         self.pickerStyle = pickerStyle
     }
     
@@ -66,6 +59,7 @@ public struct DatePickerView: View {
                         DatePicker("" , selection: $selectedDate , in: (minDate ?? Date.distantPast)...(maxDate ?? Date.distantFuture),
                                    displayedComponents: [.hourAndMinute]
                         )
+                        .environment(\.locale , getTimeSystem(timeSystem: timeSystem))
                         .datePickerStyle(.wheel)
                         .frame(maxWidth: 200)
 
@@ -78,6 +72,16 @@ public struct DatePickerView: View {
         .cornerRadius(16)
         .padding(.horizontal , 24)
         
+    }
+    
+    func getTimeSystem(timeSystem: TimeSystem)-> Locale{
+        switch timeSystem {
+        case .tweleHours:
+            return Locale(identifier: "en_US")
+            
+        case .twentyFourHours:
+            return Locale(identifier: "en_GB")
+        }
     }
 }
 

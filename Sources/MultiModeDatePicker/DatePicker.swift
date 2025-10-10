@@ -48,6 +48,7 @@ public struct DatePickerView: View {
                         DatePicker("" , selection: $selectedDate , in: (minDate ?? Date.distantPast)...(maxDate ?? Date.distantFuture),
                         displayedComponents: [.date, .hourAndMinute]
                         )
+                        .environment(\.locale , getTimeSystem(timeSystem: timeSystem))
                         .datePickerStyle(.graphical)
                     case .monthDay:
                         MonthDayPicker(date: $selectedDate)

@@ -36,3 +36,49 @@ public class MultiModeDatePicker {
         presenter.present(host, animated: true)
     }
 }
+
+
+
+struct MultiModeDatePickerPreview: View {
+    @State private var selectedDate: Date?
+    @State private var showPicker = false
+
+    var body: some View {
+        VStack(spacing: 20) {
+            if let date = selectedDate {
+                Text("Selected Date: \(date.formatted(date: .abbreviated, time: .shortened))")
+                    .font(.headline)
+            } else {
+                Text("No date selected")
+                    .foregroundColor(.gray)
+            }
+
+            Button("Show Date Picker") {
+                showPicker.toggle()
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .onChange(of: showPicker) { newValue in
+            if newValue {
+                MultiModeDatePicker.showDatePicker(
+                    title: "Select Date & Time",
+                    initialDate: Date(),
+                    minDate: Date().addingTimeInterval(-86400),
+                    maxDate: Date().addingTimeInterval(86400 * 30),
+                    timeSystem: .twentyFourHours,
+                    pickerType: .time
+                ) { selected in
+                    selectedDate = selected
+                }
+
+                // reset after presenting
+                showPicker = false
+            }
+        }
+        .padding()
+    }
+}
+
+#Preview {
+    MultiModeDatePickerPreview()
+}

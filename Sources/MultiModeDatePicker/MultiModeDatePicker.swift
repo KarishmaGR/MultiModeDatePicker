@@ -71,7 +71,6 @@ struct MultiModeDatePickerPreview: View {
                     selectedDate = selected
                 }
 
-                // reset after presenting
                 showPicker = false
             }
         }
